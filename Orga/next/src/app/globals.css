@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+:root {
+  --background: no-repeat linear-gradient(#84d8ff, #d9fff7 );
+  --foreground: #171717;
+  
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: no-repeat linear-gradient(#000b24, #003e5a);
+    --foreground: #ededed;
+  }
+}
+
+@theme {
+  --color-dark-25: 0;
+}
+
+html {
+  background-color: black;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
