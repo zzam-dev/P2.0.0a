@@ -33,6 +33,7 @@ const MainInput = ({
         hover:border-b-1
         transition
         duration-600
+        select-none
         ${className}
         `}
     />
