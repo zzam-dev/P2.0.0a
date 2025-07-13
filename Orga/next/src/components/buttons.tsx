@@ -1,21 +1,21 @@
-"use client";
-import { ReactNode } from "react";
-import { useState } from "react";
-import { useRef } from "react";
-import { gsap } from "gsap";
+'use client';
 
+import { ReactNode, useRef } from 'react';
+import { gsap } from 'gsap';
 
 type Props = {
-  label?: string;
-  classNameI?: string;
-  classNameII?: string;
-  switchI?: string;
-  switchII?: string;
+	label?: string;
+	classNameI?: string;
+	classNameII?: string;
+	switchI?: string;
+	switchII?: string;
+	state?: true | false;
+	setState?: (newstate: boolean) => void;
 };
 
 const MainButton = ({ label, classNameI }: Props): ReactNode => (
-  <button
-    className={`
+	<button
+		className={`
         bg-blue-700
         w-full
         p-2
@@ -31,38 +31,40 @@ const MainButton = ({ label, classNameI }: Props): ReactNode => (
         cursor-pointer
         ${classNameI}
     `}
-  >
-    {label}
-  </button>
+	>
+		{label}
+	</button>
 );
 
 const SwitchButton = ({
-  switchI,
-  switchII,
+	switchI,
+	switchII,
+	state,
+	setState,
 }: Props): ReactNode => {
-  const [on, seton] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const fadeTween = useRef<gsap.core.Timeline | null>(null);
+	const containerRef = useRef<HTMLDivElement>(null);
+	const fadeTween = useRef<gsap.core.Timeline | null>(null);
 
-  const handleClick = () => {
-    seton(!on);
-    console.log(on);
+	const handleClick = () => {
+		if (setState) {
+			setState(!state);
+		}
+		if (!containerRef.current) return;
 
-    if (!containerRef.current) return;
+		// If a previous tween is running — kill it instantly
+		fadeTween.current?.kill();
 
-    // If a previous tween is running — kill it instantly
-    fadeTween.current?.kill();
+		// Create a new fade-out and fade-in timeline
+		fadeTween.current = gsap
+			.timeline()
+			.to(containerRef.current, { opacity: 0, duration: 0 })
+			.to(containerRef.current, { opacity: 0.2, duration: 0.25 })
+			.to(containerRef.current, { opacity: 1, duration: 0.4 });
+	};
 
-    // Create a new fade-out and fade-in timeline
-    fadeTween.current = gsap.timeline()
-      .to(containerRef.current, { opacity: 0, duration: 0 })
-      .to(containerRef.current, { opacity: 0.2, duration: 0.25 })
-      .to(containerRef.current, { opacity: 1, duration: 0.4 });
-  };
-
-  return (
-    <div
-      className={`
+	return (
+		<div
+			className={`
         z-10
         top-5
         p-1
@@ -75,25 +77,26 @@ const SwitchButton = ({
         rounded-lg
         select-none
       `}
-      tabIndex={0}
-      onKeyDownCapture={handleClick}
-      onClick={handleClick}
-    >
-      <div
-        className={`
+			tabIndex={0}
+			onKeyDownCapture={handleClick}
+			onClick={handleClick}
+		>
+			<div
+				className={`
           w-1/2 h-full
           flex items-center justify-center
           transition-transform duration-400 ease-out
           text-base font-bold text-white/50
           translate-x-0
-          ${on ? "translate-x-0" : "translate-x-full"}
+          ${state ? 'translate-x-0' : 'translate-x-full'}
         `}
-      ref={containerRef}
-      >
-        {on ? switchII : switchI}
-      </div>
-      <div
-        className={`
+				ref={containerRef}
+			>
+				{switchII}
+			</div>
+
+			<div
+				className={`
           relative
           w-1/2 h-full
           bg-white
@@ -103,13 +106,13 @@ const SwitchButton = ({
           flex items-center justify-center
           font-bold tracking-tighter
           transition-transform duration-400 ease-out
-          ${on ? "translate-x-0" : "-translate-x-full"}
+          ${state ? 'translate-x-0' : '-translate-x-full'}
         `}
-      >
-        {on ? switchI : switchII}
-      </div>
-    </div>
-  );
+			>
+				{switchI}
+			</div>
+		</div>
+	);
 };
 
 export { MainButton, SwitchButton };

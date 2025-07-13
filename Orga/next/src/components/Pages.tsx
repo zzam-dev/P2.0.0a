@@ -1,26 +1,34 @@
+//Adding SPA,SSG and ISR
 
-import { Popup } from "@/components/wrappers";
-import { MainForm, FieldConfigs } from "@/components/forms";
-import { ReactNode } from "react";
+'use client';
+import { ReactNode, useState } from 'react';
 
+import { Popup } from '@/components/wrappers';
+import { MainForm, FieldConfigs } from '@/components/forms';
 
+const LoginPage = (): ReactNode => {
+	const [sstate, setState] = useState(true);
+	const Cfigs =
+		sstate ?
+			FieldConfigs.login.fields
+		:	FieldConfigs.register.fields;
 
-const LoginPage = (): ReactNode => (
-    <Popup>
-      <MainForm
-        className="
+	return (
+		<Popup>
+			<MainForm
+				className='
       w-full
       flex
       flex-col
       justify-center
       gap-6
-      "
-        subhandler="hand"
-        fields={FieldConfigs.register.fields}
-      >
-      </MainForm>
-    </Popup>
-);
-
-
-export default LoginPage
+      '
+				subhandler='hand'
+				fields={Cfigs}
+				state={sstate}
+				setState={setState}
+			></MainForm>
+		</Popup>
+	);
+};
+export default LoginPage;

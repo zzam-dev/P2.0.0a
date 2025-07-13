@@ -1,27 +1,27 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 type Props = {
-  children?: ReactNode;
-  className?: string;
+	children?: ReactNode;
+	className?: string;
 };
 
 const MainWrapper = ({ children }: Props): ReactNode => {
-  return (
-    <div
-      className="
+	return (
+		<div
+			className='
             w-full
             flex
             justify-center
-        "
-    >
-      {children}
-    </div>
-  );
+        '
+		>
+			{children}
+		</div>
+	);
 };
 
 const Popup = ({ className, children }: Props) => (
-  <div
-    className={`
+	<div
+		className={`
             bg-black/15
             max-md:max-w-xs
             min-md:max-w-sm
@@ -35,9 +35,9 @@ const Popup = ({ className, children }: Props) => (
             justify-center
             ${className}
         `}
-  >
-    {children}
-  </div>
+	>
+		{children}
+	</div>
 );
 
 export { MainWrapper, Popup };

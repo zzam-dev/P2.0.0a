@@ -1,19 +1,20 @@
-import { ReactNode } from "react";
-import { Fields } from "./forms";
+import { ReactNode } from 'react';
+
+import { Fields } from './forms';
 
 const MainInput = ({
-  type,
-  name,
-  className,
-  placeholder,
-  autoComplete,
+	type,
+	name,
+	className,
+	placeholder,
+	autoComplete,
 }: Fields): ReactNode => (
-    <input
-      type={type}
-      name={name ?? type}
-      placeholder={placeholder}
-      autoComplete={autoComplete}
-      className={`
+	<input
+		type={type}
+		name={name ?? type}
+		placeholder={placeholder}
+		autoComplete={autoComplete}
+		className={`
         w-full
         bg-black/35
         text-white
@@ -36,8 +37,7 @@ const MainInput = ({
         select-none
         ${className}
         `}
-    />
-  );
+	/>
+);
 
 export { MainInput };
-
