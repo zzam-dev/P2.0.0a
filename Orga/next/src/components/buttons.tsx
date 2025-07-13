@@ -13,7 +13,10 @@ type Props = {
 	setState?: (newstate: boolean) => void;
 };
 
-const MainButton = ({ label, classNameI }: Props): ReactNode => (
+const MainButton = ({
+	label,
+	classNameI,
+}: Props): ReactNode => (
 	<button
 		className={`
         bg-blue-700
@@ -57,9 +60,18 @@ const SwitchButton = ({
 		// Create a new fade-out and fade-in timeline
 		fadeTween.current = gsap
 			.timeline()
-			.to(containerRef.current, { opacity: 0, duration: 0 })
-			.to(containerRef.current, { opacity: 0.2, duration: 0.25 })
-			.to(containerRef.current, { opacity: 1, duration: 0.4 });
+			.to(containerRef.current, {
+				opacity: 0,
+				duration: 0,
+			})
+			.to(containerRef.current, {
+				opacity: 0,
+				duration: 0.3,
+			})
+			.to(containerRef.current, {
+				opacity: 1,
+				duration: 0.5,
+			});
 	};
 
 	return (
@@ -77,20 +89,19 @@ const SwitchButton = ({
         rounded-lg
         select-none
       `}
-			tabIndex={0}
-			onKeyDownCapture={handleClick}
-			onClick={handleClick}
 		>
 			<div
 				className={`
           w-1/2 h-full
           flex items-center justify-center
           transition-transform duration-400 ease-out
-          text-base font-bold text-white/50
+          text-base font-bold text-white/60
           translate-x-0
           ${state ? 'translate-x-0' : 'translate-x-full'}
         `}
 				ref={containerRef}
+				tabIndex={0} //add a pressable toggle
+				onClick={handleClick}
 			>
 				{switchII}
 			</div>
