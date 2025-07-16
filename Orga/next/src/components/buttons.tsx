@@ -11,11 +11,13 @@ type Props = {
 	switchII?: string;
 	state?: true | false;
 	setState?: (newstate: boolean) => void;
+	type?: 'submit';
 };
 
 const MainButton = ({
 	label,
 	classNameI,
+	type,
 }: Props): ReactNode => (
 	<button
 		className={`
@@ -34,6 +36,7 @@ const MainButton = ({
         cursor-pointer
         ${classNameI}
     `}
+		type={type}
 	>
 		{label}
 	</button>
@@ -83,7 +86,6 @@ const SwitchButton = ({
         bg-blue-800
         shadow-black
         inset-shadow-lg
-        cursor-pointer
         flex
         overflow-hidden
         rounded-lg
@@ -97,6 +99,7 @@ const SwitchButton = ({
           transition-transform duration-400 ease-out
           text-base font-bold text-white/60
           translate-x-0
+		  cursor-pointer
           ${state ? 'translate-x-0' : 'translate-x-full'}
         `}
 				ref={containerRef}

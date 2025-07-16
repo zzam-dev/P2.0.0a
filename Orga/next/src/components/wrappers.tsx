@@ -10,8 +10,10 @@ const MainWrapper = ({ children }: Props): ReactNode => {
 		<div
 			className='
             w-full
+            h-lvh
             flex
             justify-center
+            items-center
         '
 		>
 			{children}
@@ -22,17 +24,17 @@ const MainWrapper = ({ children }: Props): ReactNode => {
 const Popup = ({ className, children }: Props) => (
 	<div
 		className={`
-            bg-black/15
+            w-full
             max-md:max-w-xs
             min-md:max-w-sm
-            w-full
-            my-32
             rounded-xl
             backdrop-blur-2xl
             border-white/60
             border-1
             flex
             justify-center
+            shadow-black/30
+            shadow-[1px_5px_30px]
             ${className}
         `}
 	>

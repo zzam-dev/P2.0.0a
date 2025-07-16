@@ -10,7 +10,12 @@ This document tracks ongoing development, feature implementation, pending tasks,
   - ✅ Added a progress Markdown
   - ✅ Added functionality to the `Switch` component.
   - ✅ Implemented state toggling logic.
-  - ✅ Integrated Framer Motion for animated transitions.
+  - ✅ Integrated Framer Motion for animated transitions
+- **12:46 AM, 2025-06-17**
+  - ✅ Improved form UI animation.
+  - ✅ Added a NavBar.
+  - ✅ Added form handling
+  - ✅ Modularized form logic
 
 ---
 
@@ -76,11 +81,6 @@ This document tracks ongoing development, feature implementation, pending tasks,
 
 ## ✅ TODO / Learning Goals
 
-- 📖 Master `.md` (Markdown) syntax:
-  - Lists, code blocks, tables, headings, task lists.
-  - Changelog conventions.
-  - Docs structuring.
-
 - 🔍 Learn OAuth and token management flows.
 - 💾 Deepen knowledge of PostgreSQL:
   - Indexing
@@ -123,6 +123,7 @@ This document tracks ongoing development, feature implementation, pending tasks,
 | Category               | Progress       |
 | :--------------------- | :------------- |
 | Switch Component       | ✅ Completed   |
+| Navigation Bar         | ⏳ In Progress |
 | Form Handling          | ⏳ In Progress |
 | Input Validation       | ⏳ In Progress |
 | Server Configuration   | ⏳ Pending     |

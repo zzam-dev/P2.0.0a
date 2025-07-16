@@ -1,6 +1,5 @@
+import { Fields } from '@/configs/FormConfigs';
 import { ReactNode } from 'react';
-
-import { Fields } from './forms';
 
 const MainInput = ({
 	type,
@@ -8,12 +7,14 @@ const MainInput = ({
 	className,
 	placeholder,
 	autoComplete,
+	style,
 }: Fields): ReactNode => (
 	<input
 		type={type}
 		name={name ?? type}
 		placeholder={placeholder}
 		autoComplete={autoComplete}
+		style={style}
 		className={`
         w-full
         bg-black/35
@@ -35,6 +36,8 @@ const MainInput = ({
         transition
         duration-600
         select-none
+        input-animation
+        
         ${className}
         `}
 	/>
