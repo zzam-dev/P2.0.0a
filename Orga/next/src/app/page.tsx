@@ -1,6 +1,6 @@
 import { MainNavBar } from '@/components/NavBar';
 import { MainWrapper } from '@/components/wrappers';
-import LoginPage from '@/logic/Formhandling';
+import { LoginPage } from '@/logic/Formhandling';
 
 const Main = () => {
 	return (
