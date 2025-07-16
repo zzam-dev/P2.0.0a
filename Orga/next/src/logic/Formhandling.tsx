@@ -3,7 +3,7 @@
 import { useState, ReactNode } from 'react';
 
 import { Popup } from '@/components/wrappers';
-import { MainForm } from '@/pages/forms';
+import { MainForm } from '@/PagesToRender/forms';
 import { FieldConfigs } from '@/configs/FormConfigs';
 
 const LoginPage = (): ReactNode => {
