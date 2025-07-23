@@ -26,10 +26,11 @@ const MainButton = ({
         p-2
         rounded
         text-white
-        text-lg
+        text-xl
         shadow-blue-500/80
         hover:shadow-[0_0_10px]
         hover:bg-blue-600
+		focus:outline-0
         transition
         duration-300
         select-none
@@ -90,6 +91,7 @@ const SwitchButton = ({
         overflow-hidden
         rounded-lg
         select-none
+		text-lg
       `}
 		>
 			<div
@@ -97,7 +99,7 @@ const SwitchButton = ({
           w-1/2 h-full
           flex items-center justify-center
           transition-transform duration-400 ease-out
-          text-base font-bold text-white/60
+		  font-bold text-white/60
           translate-x-0
 		  cursor-pointer
           ${state ? 'translate-x-0' : 'translate-x-full'}
@@ -117,6 +119,7 @@ const SwitchButton = ({
           rounded
           shadow-[0_0_15px_#fffa]
           text-black
+		  text-xl
           flex items-center justify-center
           font-bold tracking-tighter
           transition-transform duration-400 ease-out

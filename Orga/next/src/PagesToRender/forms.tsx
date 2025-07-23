@@ -1,5 +1,4 @@
-import { FormEventHandler, ReactNode } from 'react';
-
+import { ReactNode, FormEventHandler } from 'react';
 import { MainInput } from '../components/input';
 import {
 	MainButton,
@@ -15,13 +14,17 @@ type Props = FieldConfig & {
 	onSubmit: FormEventHandler<HTMLFormElement>;
 };
 
+type FormValues = {
+	[key: string]: string;
+};
+
 const MainForm = ({
 	className,
 	children,
 	state,
 	fields = [],
-	onSubmit,
 	setState,
+	onSubmit,
 }: Props) => {
 	return (
 		<div className='w-full m-5'>
@@ -40,8 +43,8 @@ const MainForm = ({
 				{fields.map((field, idx) => (
 					<MainInput
 						key={`${field.name ?? idx}-${state ? 'login' : 'register'}`}
-						type={field.type}
 						name={field.name}
+						type={field.type}
 						placeholder={field.placeholder}
 						autoComplete={field.autoComplete ?? 'off'}
 						style={{ animationDelay: `${idx * 100}ms` }}
@@ -58,4 +61,4 @@ const MainForm = ({
 	);
 };
 
-export { MainForm };
+export { MainForm, type FormValues };

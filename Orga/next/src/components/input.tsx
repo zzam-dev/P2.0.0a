@@ -1,5 +1,6 @@
+import { ReactNode, useState } from 'react';
 import { Fields } from '@/configs/FormConfigs';
-import { ReactNode } from 'react';
+import validator from '@/logic/FormValidation';
 
 const MainInput = ({
 	type,
@@ -8,18 +9,27 @@ const MainInput = ({
 	placeholder,
 	autoComplete,
 	style,
-}: Fields): ReactNode => (
-	<input
-		type={type}
-		name={name ?? type}
-		placeholder={placeholder}
-		autoComplete={autoComplete}
-		style={style}
-		className={`
+}: Fields): ReactNode => {
+	const [inputValue, setInputValue] = useState('');
+	const [blur, setBlur] = useState(false);
+	const handle = () => {
+		setBlur(true);
+	};
+	return (
+		<>
+			<input
+				type={type}
+				name={name}
+				placeholder={placeholder}
+				autoComplete={autoComplete}
+				style={style}
+				value={inputValue}
+				onChange={(e) => setInputValue(e.target.value)}
+				onBlur={handle}
+				className={`
         w-full
         bg-black/35
         text-white
-        text-sm
         px-4
         py-2
         outline-none
@@ -31,16 +41,21 @@ const MainInput = ({
         focus:bg-blue-500/90
         shadow-blue-500
         focus:shadow-[0_0_15px]
-        focus:border-0
-        hover:border-b-1
+        focus:border-transparent
+        hover:border-transparent
         transition
-        duration-600
+        duration-300
         select-none
         input-animation
         
         ${className}
         `}
-	/>
-);
+			/>
+			<p className='font-mono px-4 py-0.5 text-xs text-bold -my-4 text-red-500 text-shadow-xs min-h-4'>
+				{blur ? validator(name, inputValue) : ''}
+			</p>
+		</>
+	);
+};
 
 export { MainInput };

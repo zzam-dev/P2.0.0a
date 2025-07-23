@@ -28,7 +28,7 @@ body {
 }
 
 .input-animation {
-	animation: input-animation 600ms linear 1 backwards;
+	animation: input-animation 150ms linear 1 backwards;
 }
 
 @keyframes input-animation {
@@ -43,4 +43,8 @@ body {
 		transform: translateX(0) translateY(0);
 		opacity: 1;
 	}
+}
+
+*:focus {
+	outline: 0 solid red !important;
 }

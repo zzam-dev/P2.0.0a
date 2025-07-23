@@ -1,13 +1,17 @@
+type FormType = 'login' | 'register';
+
+type Name =
+	| 'text'
+	| 'username'
+	| 'fname'
+	| 'lname'
+	| 'email'
+	| 'password'
+	| 'cpassword';
+
 type Fields = {
 	type: 'text' | 'email' | 'password';
-	name?:
-		| 'text'
-		| 'username'
-		| 'fname'
-		| 'lname'
-		| 'email'
-		| 'password'
-		| 'cpassword';
+	name: Name;
 	placeholder?: string;
 	className?: string;
 	autoComplete?: 'on' | 'off';
@@ -20,18 +24,20 @@ type FieldConfig = {
 	fields: Fields[];
 };
 
-const FieldConfigs: { [key: string]: FieldConfig } = {
+const FieldConfigs: Record<FormType, FieldConfig> = {
 	login: {
 		subhandler: '',
-		url: 'localhost:8000/login',
+		url: '/login',
 		fields: [
 			{
-				type: 'email',
-				placeholder: 'Email',
+				type: 'text',
+				name: 'username',
+				placeholder: 'Username',
 				autoComplete: 'on',
 			},
 			{
 				type: 'password',
+				name: 'password',
 				placeholder: 'Password',
 				autoComplete: 'on',
 			},
@@ -39,15 +45,23 @@ const FieldConfigs: { [key: string]: FieldConfig } = {
 	},
 	register: {
 		subhandler: '',
-		url: 'localhost:8000/register',
+		url: '/register',
 		fields: [
 			{
 				type: 'text',
 				placeholder: 'Username',
 				name: 'username',
 			},
-			{ type: 'email', placeholder: 'Email' },
-			{ type: 'password', placeholder: 'Password' },
+			{
+				type: 'email',
+				placeholder: 'Email',
+				name: 'email',
+			},
+			{
+				type: 'password',
+				placeholder: 'Password',
+				name: 'password',
+			},
 			{
 				type: 'password',
 				name: 'cpassword',
@@ -55,7 +69,7 @@ const FieldConfigs: { [key: string]: FieldConfig } = {
 			},
 		],
 	},
-}; //Should be modularized, Form handling should be added and completed
+};
 
-export { FieldConfigs };
-export type { FieldConfig, Fields };
+export default FieldConfigs;
+export type { FieldConfig, FormType, Name, Fields };
