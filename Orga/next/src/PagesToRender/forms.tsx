@@ -27,7 +27,7 @@ const MainForm = ({
 	onSubmit,
 }: Props) => {
 	return (
-		<div className='w-full m-5'>
+		<div className='w-full'>
 			<form
 				onSubmit={onSubmit}
 				className={`

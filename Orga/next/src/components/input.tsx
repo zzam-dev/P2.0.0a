@@ -33,15 +33,18 @@ const MainInput = ({
         px-4
         py-2
         outline-none
-        rounded-md
-        rounded-b
+        rounded-xl
+        rounded-b-xl
         border-b-3
-        border-b-blue-500
+        border-b-blue-400/70
         placeholder:text-white/80
-        focus:bg-blue-500/90
         shadow-blue-500
+        focus:bg-blue-500/90
         focus:shadow-[0_0_15px]
         focus:border-transparent
+        autofill:shadow-[0_0_15px]
+        autofill:border-transparent
+        autofill:bg-blue-500/90
         hover:border-transparent
         transition
         duration-300

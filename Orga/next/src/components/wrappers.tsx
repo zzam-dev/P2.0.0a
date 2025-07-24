@@ -24,17 +24,12 @@ const MainWrapper = ({ children }: Props): ReactNode => {
 const Popup = ({ className, children }: Props) => (
 	<div
 		className={`
-            w-full
-            max-md:max-w-xs
-            min-md:max-w-sm
-            rounded-xl
+			bg-black/20 
+            rounded-2xl
             backdrop-blur-2xl
-            border-white/60
-            border-1
             flex
-            justify-center
             shadow-black/30
-            shadow-[1px_5px_30px]
+            shadow-[1px_5px_10px]
             ${className}
         `}
 	>
@@ -42,4 +37,8 @@ const Popup = ({ className, children }: Props) => (
 	</div>
 );
 
-export { MainWrapper, Popup };
+const Hwrapper = ({ children }: Props): ReactNode => (
+	<div className='w-full'>{children}</div>
+);
+
+export { MainWrapper, Popup, Hwrapper };

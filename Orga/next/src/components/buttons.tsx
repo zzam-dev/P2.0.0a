@@ -1,5 +1,4 @@
 'use client';
-
 import { ReactNode, useRef } from 'react';
 import { gsap } from 'gsap';
 
@@ -11,6 +10,8 @@ type Props = {
 	switchII?: string;
 	state?: true | false;
 	setState?: (newstate: boolean) => void;
+	onClick?: React.MouseEventHandler<HTMLDivElement>;
+	size?: number;
 	type?: 'submit';
 };
 
@@ -24,7 +25,7 @@ const MainButton = ({
         bg-blue-700
         w-full
         p-2
-        rounded
+        rounded-xl
         text-white
         text-xl
         shadow-blue-500/80
@@ -89,7 +90,7 @@ const SwitchButton = ({
         inset-shadow-lg
         flex
         overflow-hidden
-        rounded-lg
+        rounded-xl
         select-none
 		text-lg
       `}
@@ -116,7 +117,7 @@ const SwitchButton = ({
           relative
           w-1/2 h-full
           bg-white
-          rounded
+          rounded-lg
           shadow-[0_0_15px_#fffa]
           text-black
 		  text-xl
@@ -132,4 +133,21 @@ const SwitchButton = ({
 	);
 };
 
-export { MainButton, SwitchButton };
+const NavButton = ({
+	classNameI,
+	onClick,
+}: Props): ReactNode => {
+	return (
+		<div
+			className={`
+			rounded-full
+			w-full
+			h-full
+			${classNameI}
+			`}
+			onClick={onClick}
+		/>
+	);
+};
+
+export { MainButton, SwitchButton, NavButton };

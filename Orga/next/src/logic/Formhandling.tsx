@@ -1,24 +1,26 @@
 'use client';
-
 import { useState, ReactNode } from 'react';
-
-import { Popup } from '@/components/wrappers';
+import { Hwrapper, Popup } from '@/components/wrappers';
 import { MainForm } from '@/PagesToRender/forms';
 import FieldConfigs from '@/configs/FormConfigs';
+import { NavButton } from '@/components/buttons';
 
 const LoginPage = (): ReactNode => {
 	const [sstate, setState] = useState(true);
+	const [visible, setVisible] = useState(true);
 	const FormConfig =
 		sstate ? FieldConfigs.login : FieldConfigs.register;
 	const port = 8000;
 	const address = 'http://192.168.1.2:' + port;
 	const endpoint = address + FormConfig.url;
+
 	const connConfig = {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
 		},
 	};
+
 	const handler = async (
 		event: React.FormEvent<HTMLFormElement>
 	) => {
@@ -37,8 +39,31 @@ const LoginPage = (): ReactNode => {
 		}
 	};
 
+	const handleClick = () => {
+		console.log('Minimizing Popup');
+		setVisible(!visible);
+	};
+
 	return (
-		<Popup className='-mt-16 bg-black/20'>
+		<Popup
+			className={`
+				transition duration-300 ease-in-out
+				${visible ? '' : 'scale-30 opacity-0 translate-y-32'}
+				p-3 -mt-16 border border-white/20 w-full
+				max-md:max-w-xs md:max-w-sm
+				items-center flex flex-col
+			`}
+		>
+			<Hwrapper>
+				<Popup className='relative right-0 w-8 h-8 mb-4 p-2 rounded border border-white/10'>
+					<NavButton
+						classNameI='bg-red-400 shadow-red-300 shadow-lg'
+						size={4}
+						onClick={handleClick}
+					/>
+				</Popup>
+			</Hwrapper>
+
 			<MainForm
 				onSubmit={handler}
 				url={FormConfig.url}
