@@ -33,7 +33,7 @@ jobs:
       - name: Upload static output
         uses: actions/upload-pages-artifact@v3
         with:
-          path: Orga/next/out
+          path: Orga/next
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
