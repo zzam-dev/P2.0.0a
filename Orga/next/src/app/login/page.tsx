@@ -11,7 +11,8 @@ const LoginPage = (): ReactNode => {
 	const FormConfig =
 		sstate ? FieldConfigs.login : FieldConfigs.register;
 	const port = 8000;
-	const address = 'http://192.168.1.2:' + port;
+	const address =
+		'https://j4q3mt0x-8000.uks1.devtunnels.ms/' + port;
 	const endpoint = address + FormConfig.url;
 
 	const connConfig = {

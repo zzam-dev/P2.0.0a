@@ -16,6 +16,10 @@ This document tracks ongoing development, feature implementation, pending tasks,
   - ✅ Added a NavBar.
   - ✅ Added form handling
   - ✅ Modularized form logic
+- **3:44 PM, 2025-07-17**
+  - ✅ Added a functional NavBar
+  - ✅ Implemented SSR, SPA and Hydrated pages
+  - ✅ Improved UX
 
 ---
 
@@ -24,6 +28,7 @@ This document tracks ongoing development, feature implementation, pending tasks,
 ### 🔸 UI/UX Components
 
 - **Form Handling**
+
   - Create form submission handler functions.
   - Display client-side validation feedback (inline error messages / border colors).
 
@@ -38,12 +43,14 @@ This document tracks ongoing development, feature implementation, pending tasks,
 ### 🔸 Backend / Server Development
 
 - **Server-Side Validation**
+
   - Validate all request bodies.
   - Sanitize user inputs.
   - Implement secure password hashing with `bcrypt` or `argon2`.
   - Define consistent API response structure (success / error).
 
 - **Database Integration (PostgreSQL)**
+
   - Install and configure Prisma ORM.
   - Define database schema via `prisma/schema.prisma`.
   - Apply migrations.
@@ -54,6 +61,7 @@ This document tracks ongoing development, feature implementation, pending tasks,
     - CRUD operations for project-specific entities.
 
 - **Database Validation**
+
   - Enforce data constraints (unique, non-null, foreign keys).
   - Implement transaction safety for multi-step operations.
   - Handle edge cases and rollback on error.
@@ -67,22 +75,13 @@ This document tracks ongoing development, feature implementation, pending tasks,
   - Token management and refresh logic.
   - Session persistence via JWT or database-backed sessions.
 
-### 🔸 Rendering Strategies
-
-- Implement:
-  - **SPA (Single Page Application)**
-    - Client-side routing for dynamic pages.
-  - **SSR (Server-Side Rendering)**
-    - Pre-render pages on request (login, profile, admin dashboard).
-  - **ISR (Incremental Static Regeneration)**
-    - Configure ISR for rarely-changing pages (home, landing pages, FAQs).
-
 ---
 
 ## ✅ TODO / Learning Goals
 
 - 🔍 Learn OAuth and token management flows.
 - 💾 Deepen knowledge of PostgreSQL:
+
   - Indexing
   - Joins
   - Transactions
@@ -123,13 +122,13 @@ This document tracks ongoing development, feature implementation, pending tasks,
 | Category               | Progress       |
 | :--------------------- | :------------- |
 | Switch Component       | ✅ Completed   |
-| Navigation Bar         | ⏳ In Progress |
+| Navigation Bar         | ✅ In Progress |
 | Form Handling          | ⏳ In Progress |
 | Input Validation       | ⏳ In Progress |
 | Server Configuration   | ⏳ Pending     |
 | Server-Side Validation | ⏳ Pending     |
 | Database Integration   | ⏳ Pending     |
 | Authentication (OAuth) | ⏳ Pending     |
-| SPA / SSR / ISR        | ⏳ Pending     |
+| SPA / SSR / ISR        | ✅ Pending     |
 
 ---

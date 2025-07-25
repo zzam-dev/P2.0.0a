@@ -8,12 +8,17 @@ const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 const port = 8000;
 const corsOptions = {
-    origin: '*',
+    origin: [
+        'https://j4q3mt0x-8000.uks1.devtunnels.ms',
+        'http://localhost:3000',
+    ],
+    credentials: true,
     optionsSuccessStatus: 204,
 };
+app.options('*', (0, cors_1.default)(corsOptions));
 app.use((0, cors_1.default)(corsOptions));
 app.use(express_1.default.json());
-const login = app.post('/login', (req, res) => {
+app.post('/login', (req, res) => {
     const data = req.body;
     console.log('Incoming Connection!');
     setTimeout(() => {
@@ -21,13 +26,11 @@ const login = app.post('/login', (req, res) => {
         res.send('Recieved:' + JSON.stringify(data));
     }, 500);
 });
-login.on('error', console.error);
-const register = app.post('/register', (req, res) => {
+app.post('/register', (req, res) => {
     const data = req.body;
     console.log(data);
     res.send('Recieved:' + JSON.stringify(data));
 });
-register.on('error', console.error);
 const server = app.listen(port, () => {
     console.log('Listening on port:' + port);
 });
