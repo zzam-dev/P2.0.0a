@@ -25,6 +25,8 @@ const Popup = ({ className, children }: Props) => (
 	<div
 		className={`
 			bg-black/20 
+			border-1
+			border-white/20
             rounded-2xl
             backdrop-blur-2xl
             flex

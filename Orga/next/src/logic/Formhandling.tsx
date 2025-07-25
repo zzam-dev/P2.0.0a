@@ -45,11 +45,11 @@ const LoginPage = (): ReactNode => {
 	};
 
 	return (
-		<Popup
+		<Popup //Fix the fucking button glow clip and make the quit button to the right
 			className={`
 				transition duration-300 ease-in-out
 				${visible ? '' : 'scale-30 opacity-0 translate-y-32'}
-				p-3 -mt-16 border border-white/20 w-full
+				p-3 -mt-16 w-full
 				max-md:max-w-xs md:max-w-sm
 				items-center flex flex-col
 			`}
