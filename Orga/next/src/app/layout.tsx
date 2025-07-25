@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
+import { MainNavBar } from '@/components/NavBar';
+import { MainWrapper } from '@/components/wrappers';
+import { useMemo } from 'react';
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
@@ -22,12 +25,24 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	const fields = useMemo(
+		() => [
+			{ name: 'search', url: '#' },
+			{ name: 'Home', url: '/' },
+			{ name: 'Login', url: '/login' },
+		],
+		[]
+	);
+
 	return (
 		<html lang='en'>
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
-				{children}
+				<MainWrapper>
+					<MainNavBar fields={fields} />
+					{children}
+				</MainWrapper>
 			</body>
 		</html>
 	);

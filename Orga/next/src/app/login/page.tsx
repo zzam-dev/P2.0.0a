@@ -1,7 +1,7 @@
 'use client';
 import { useState, ReactNode } from 'react';
 import { Hwrapper, Popup } from '@/components/wrappers';
-import { MainForm } from '@/PagesToRender/forms';
+import { MainForm } from '@/components/forms';
 import FieldConfigs from '@/configs/FormConfigs';
 import { NavButton } from '@/components/buttons';
 
