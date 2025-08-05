@@ -11,16 +11,30 @@ const LoginPage = (): ReactNode => {
 	const FormConfig =
 		sstate ? FieldConfigs.login : FieldConfigs.register;
 	const port = 8000;
-	const address =
-		'https://j4q3mt0x-8000.uks1.devtunnels.ms/' + port;
+	const address = 'http://192.168.1.2:' + port;
 	const endpoint = address + FormConfig.url;
 
-	const connConfig = {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-	};
+	class ConnConfig {
+		method: string;
+		headers: Record<string, string>;
+		body: string;
+
+		constructor(value: object) {
+			this.method = 'POST';
+			this.headers = {
+				'Content-Type': 'application/json',
+			};
+			this.body = JSON.stringify(value);
+		}
+
+		getConfig() {
+			return {
+				method: this.method,
+				headers: this.headers,
+				body: this.body,
+			};
+		}
+	}
 
 	const handler = async (
 		event: React.FormEvent<HTMLFormElement>
@@ -28,15 +42,17 @@ const LoginPage = (): ReactNode => {
 		event.preventDefault();
 		const formData = new FormData(event.currentTarget);
 		const data = Object.fromEntries(formData.entries());
-		console.log(data);
 		try {
-			const res = await fetch(endpoint, connConfig);
+			const res = await fetch(
+				endpoint,
+				new ConnConfig(data)
+			);
 			if (!res.ok)
 				throw new Error(`HTTP error! status:${res.status}`);
-			const req = await res.text();
+			const req = await res.json();
 			console.log(req);
-		} catch (error) {
-			console.error(error);
+		} catch (err) {
+			console.error(err);
 		}
 	};
 

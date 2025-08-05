@@ -14,23 +14,22 @@ const corsOptions = {
 	optionsSuccessStatus: 204,
 };
 
-app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));
 app.use(express.json());
 
 app.post('/login', (req, res) => {
 	const data = req.body;
-	console.log('Incoming Connection!');
+	console.log('Incoming Connection!!!');
 	setTimeout(() => {
 		console.log(data);
-		res.send('Recieved:' + JSON.stringify(data));
-	}, 500);
+		res.send(JSON.stringify(data));
+	}, 1000);
 });
 
 app.post('/register', (req, res) => {
 	const data = req.body;
 	console.log(data);
-	res.send('Recieved:' + JSON.stringify(data));
+	res.send(JSON.stringify(data));
 });
 
 const server = app.listen(port, () => {
